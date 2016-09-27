@@ -4316,3 +4316,468 @@ Processing by PinsController#show as HTML
 Completed 200 OK in 93ms (Views: 86.4ms | ActiveRecord: 3.1ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ActsAsVotableMigration (20160927231422)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class ActsAsVotableMigration < ActiveRecord::Migration[4.2] (called from load at /home/pika/.rvm/gems/ruby-2.3.1/bin/rake:23)
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "votable_type" varchar, "votable_id" integer, "voter_type" varchar, "voter_id" integer, "vote_flag" boolean, "vote_scope" varchar, "vote_weight" integer, "created_at" datetime, "updated_at" datetime)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_votes_on_voter_id_and_voter_type_and_vote_scope" ON "votes" ("voter_id", "voter_type", "vote_scope")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_votes_on_voter_id_and_voter_type_and_vote_scope' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_votes_on_voter_id_and_voter_type_and_vote_scope' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_votes_on_votable_id_and_votable_type_and_vote_scope" ON "votes" ("votable_id", "votable_type", "vote_scope")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160927231422"]]
+  [1m[35m (175.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pins_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pins_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_votes_on_votable_id_and_votable_type_and_vote_scope' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_votes_on_votable_id_and_votable_type_and_vote_scope' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_votes_on_voter_id_and_voter_type_and_vote_scope' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_votes_on_voter_id_and_voter_type_and_vote_scope' AND type='index'
+[0m
+Started GET "/pins/7" for 127.0.0.1 at 2016-09-28 04:57:05 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPin Load (0.4ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering pins/show.html.haml within layouts/application
+  Rendered pins/show.html.haml within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 1.0ms)
+
+
+  
+SyntaxError (/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:19: syntax error, unexpected ')'
+));}\n              <span clas...
+ ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:19: syntax error, unexpected keyword_class, expecting keyword_do or '{' or '('
+...));}\n              <span class='glyphicon glyphicon-heart'>...
+...                               ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:19: syntax error, unexpected $undefined
+...s='glyphicon glyphicon-heart'>\n                #{_hamlout.a...
+...                               ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:21: syntax error, unexpected '}', expecting keyword_end
+));}\n              </span>\n    ...
+    ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: unknown regexp options - dv
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+....push_text("            </div>\n          </div>\n        </...
+...                               ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: unknown regexp options - dv
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+...        </div>\n        </div>\n      </div>\n    </div>\n  ...
+...                               ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: unknown regexp options - dv
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+...div>\n      </div>\n    </div>\n  </div>\n</div>\n", -7, fal...
+...                               ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: unknown regexp options - dv
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+...\n    </div>\n  </div>\n</div>\n", -7, false);::Haml::Util.h...
+...                               ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: unterminated string meets end of file
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/pins/show.html.haml:19: syntax error, unexpected ')'
+app/views/pins/show.html.haml:19: syntax error, unexpected keyword_class, expecting keyword_do or '{' or '('
+app/views/pins/show.html.haml:19: syntax error, unexpected $undefined
+app/views/pins/show.html.haml:21: syntax error, unexpected '}', expecting keyword_end
+app/views/pins/show.html.haml:23: unknown regexp options - dv
+app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+app/views/pins/show.html.haml:23: unknown regexp options - dv
+app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+app/views/pins/show.html.haml:23: unknown regexp options - dv
+app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+app/views/pins/show.html.haml:23: unknown regexp options - dv
+app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+app/views/pins/show.html.haml:23: unterminated string meets end of file
+app/views/pins/show.html.haml:23: syntax error, unexpected end-of-input, expecting keyword_end
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.8ms)
+Started GET "/pins/7" for 127.0.0.1 at 2016-09-28 04:57:46 +0530
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPin Load (0.5ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering pins/show.html.haml within layouts/application
+  Rendered pins/show.html.haml within layouts/application (16.3ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.5ms)
+
+
+  
+SyntaxError (/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:19: syntax error, unexpected ')'
+));}\n              <span clas...
+ ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:19: syntax error, unexpected keyword_class, expecting keyword_do or '{' or '('
+...));}\n              <span class='glyphicon glyphicon-heart'>...
+...                               ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:19: syntax error, unexpected $undefined
+...s='glyphicon glyphicon-heart'>\n                #{_hamlout.a...
+...                               ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:21: syntax error, unexpected '}', expecting keyword_end
+));}\n              </span>\n    ...
+    ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: unknown regexp options - dv
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+....push_text("            </div>\n          </div>\n        </...
+...                               ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: unknown regexp options - dv
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+...        </div>\n        </div>\n      </div>\n    </div>\n  ...
+...                               ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: unknown regexp options - dv
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+...div>\n      </div>\n    </div>\n  </div>\n</div>\n", -7, fal...
+...                               ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: unknown regexp options - dv
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+...\n    </div>\n  </div>\n</div>\n", -7, false);::Haml::Util.h...
+...                               ^
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: unterminated string meets end of file
+/home/pika/personal/ruby_tutorial/demo/pin_board/app/views/pins/show.html.haml:23: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/pins/show.html.haml:19: syntax error, unexpected ')'
+app/views/pins/show.html.haml:19: syntax error, unexpected keyword_class, expecting keyword_do or '{' or '('
+app/views/pins/show.html.haml:19: syntax error, unexpected $undefined
+app/views/pins/show.html.haml:21: syntax error, unexpected '}', expecting keyword_end
+app/views/pins/show.html.haml:23: unknown regexp options - dv
+app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+app/views/pins/show.html.haml:23: unknown regexp options - dv
+app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+app/views/pins/show.html.haml:23: unknown regexp options - dv
+app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+app/views/pins/show.html.haml:23: unknown regexp options - dv
+app/views/pins/show.html.haml:23: syntax error, unexpected $undefined
+app/views/pins/show.html.haml:23: unterminated string meets end of file
+app/views/pins/show.html.haml:23: syntax error, unexpected end-of-input, expecting keyword_end
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.7ms)
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.5ms)
+Started GET "/pins/7" for 127.0.0.1 at 2016-09-28 04:58:52 +0530
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPin Load (0.3ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering pins/show.html.haml within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered pins/show.html.haml within layouts/application (145.9ms)
+Completed 500 Internal Server Error in 165ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `like_pin_path' for #<#<Class:0x007fd42c4edf38>:0x007fd42d146af0>
+Did you mean?  Likes_pin_path
+               edit_pin_path):
+    15: 					.col-md-6
+    16: 						.pull-right
+    17: 							- if user_signed_in?
+    18: 								= link_to like_pin_path(@pin), method: :put, class: "btn btn-default"	do
+    19: 									%span.glyphicon.glyphicon-heart
+    20: 									= @pin.get_upvotes.size
+    21: 								= link_to "Edit", edit_pin_path, class: "btn btn-default"
+  
+app/views/pins/show.html.haml:18:in `_app_views_pins_show_html_haml___1005893228639647744_70274633054940'
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.8ms)
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.7ms)
+Started GET "/pins/7" for 127.0.0.1 at 2016-09-28 05:02:48 +0530
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPin Load (0.1ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering pins/show.html.haml within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered pins/show.html.haml within layouts/application (83.5ms)
+Completed 500 Internal Server Error in 89ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `like_pin_path' for #<#<Class:0x007fd42c4edf38>:0x007fd42cc32f50>
+Did you mean?  Likes_pin_path
+               edit_pin_path):
+    15: 					.col-md-6
+    16: 						.btn-group.pull-right
+    17: 							- if user_signed_in?
+    18: 								= link_to like_pin_path(@pin), method: :put, class: "btn btn-default" do
+    19: 									%span.glyphicon.glyphicon-heart
+    20: 									= @pin.get_upvotes.size
+    21: 
+  
+app/views/pins/show.html.haml:18:in `_app_views_pins_show_html_haml___1005893228639647744_70274630393000'
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.0ms)
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/pika/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.5ms)
+Started GET "/pins/7" for 127.0.0.1 at 2016-09-28 05:04:57 +0530
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPin Load (0.1ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering pins/show.html.haml within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 7], ["votable_type", "Pin"], ["vote_flag", true]]
+  Rendered pins/show.html.haml within layouts/application (31.7ms)
+Completed 200 OK in 410ms (Views: 391.7ms | ActiveRecord: 2.3ms)
+
+
+Started PUT "/pins/7/like" for 127.0.0.1 at 2016-09-28 05:05:07 +0530
+Processing by PinsController#upvote as HTML
+  Parameters: {"authenticity_token"=>"8P9O7jeuAXlRNHQlv/Jcp/NnvFQzMqgQEU2KV2JSED/xrXTgTFTndVIGzJ8ZhyDkpWTQARjoRzvAhiV7ktgIDg==", "id"=>"7"}
+  [1m[36mPin Load (0.4ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ?[0m  [["votable_id", 7], ["votable_type", "Pin"], ["voter_id", 1], ["voter_type", "User"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "votes" ("votable_type", "votable_id", "voter_type", "voter_id", "vote_flag", "vote_weight", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["votable_type", "Pin"], ["votable_id", 7], ["voter_type", "User"], ["voter_id", 1], ["vote_flag", true], ["vote_weight", 1], ["created_at", 2016-09-27 23:35:07 UTC], ["updated_at", 2016-09-27 23:35:07 UTC]]
+  [1m[35m (205.5ms)[0m  [1m[36mcommit transaction[0m
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from upvote at /home/pika/personal/ruby_tutorial/demo/pin_board/app/controllers/pins_controller.rb:43)
+Redirected to http://localhost:3000/pins/7
+Completed 302 Found in 246ms (ActiveRecord: 206.9ms)
+
+
+Started GET "/pins/7" for 127.0.0.1 at 2016-09-28 05:05:08 +0530
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPin Load (0.7ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering pins/show.html.haml within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 7], ["votable_type", "Pin"], ["vote_flag", true]]
+  Rendered pins/show.html.haml within layouts/application (7.7ms)
+Completed 200 OK in 51ms (Views: 46.4ms | ActiveRecord: 1.3ms)
+
+
+Started PUT "/pins/7/like" for 127.0.0.1 at 2016-09-28 05:05:11 +0530
+Processing by PinsController#upvote as HTML
+  Parameters: {"authenticity_token"=>"bOoX0ItArFbUIGsElVdONeWdxGBWbEY9XSCnmhiV4aVtuC3e8LpKWtcS074zIjJ2s56oNX22qRaM6wi26B/5lA==", "id"=>"7"}
+  [1m[36mPin Load (0.4ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ?[0m  [["votable_id", 7], ["votable_type", "Pin"], ["voter_id", 1], ["voter_type", "User"]]
+  [1m[36mActsAsVotable::Vote Load (0.6ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? ORDER BY "votes"."id" DESC LIMIT ?[0m  [["votable_id", 7], ["votable_type", "Pin"], ["voter_id", 1], ["voter_type", "User"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from upvote at /home/pika/personal/ruby_tutorial/demo/pin_board/app/controllers/pins_controller.rb:43)
+Redirected to http://localhost:3000/pins/7
+Completed 302 Found in 9ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/pins/7" for 127.0.0.1 at 2016-09-28 05:05:11 +0530
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPin Load (0.6ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering pins/show.html.haml within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 7], ["votable_type", "Pin"], ["vote_flag", true]]
+  Rendered pins/show.html.haml within layouts/application (13.3ms)
+Completed 200 OK in 68ms (Views: 61.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-28 05:05:17 +0530
+Processing by PinsController#index as HTML
+  Rendering pins/index.html.haml within layouts/application
+  [1m[36mPin Load (0.3ms)[0m  [1m[34mSELECT "pins".* FROM "pins" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered pins/index.html.haml within layouts/application (9.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 78ms (Views: 76.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/pins/6" for 127.0.0.1 at 2016-09-28 05:06:20 +0530
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPin Load (0.5ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering pins/show.html.haml within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 6], ["votable_type", "Pin"], ["vote_flag", true]]
+  Rendered pins/show.html.haml within layouts/application (14.4ms)
+Completed 200 OK in 75ms (Views: 67.8ms | ActiveRecord: 1.5ms)
+
+
+Started PUT "/pins/6/like" for 127.0.0.1 at 2016-09-28 05:06:23 +0530
+Processing by PinsController#upvote as HTML
+  Parameters: {"authenticity_token"=>"OCZMWcp+uL7p1b+PXcc1XhxW0r84rXQl00Q4J4Q3O745dHZXsYResurnBzX7skkdSlW+6hN3mw4Cj5cLdL0jjw==", "id"=>"6"}
+  [1m[36mPin Load (0.2ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ?[0m  [["votable_id", 6], ["votable_type", "Pin"], ["voter_id", 1], ["voter_type", "User"]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("votable_type", "votable_id", "voter_type", "voter_id", "vote_flag", "vote_weight", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["votable_type", "Pin"], ["votable_id", 6], ["voter_type", "User"], ["voter_id", 1], ["vote_flag", true], ["vote_weight", 1], ["created_at", 2016-09-27 23:36:23 UTC], ["updated_at", 2016-09-27 23:36:23 UTC]]
+  [1m[35m (200.1ms)[0m  [1m[36mcommit transaction[0m
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from upvote at /home/pika/personal/ruby_tutorial/demo/pin_board/app/controllers/pins_controller.rb:43)
+Redirected to http://localhost:3000/pins/6
+Completed 302 Found in 214ms (ActiveRecord: 201.6ms)
+
+
+Started GET "/pins/6" for 127.0.0.1 at 2016-09-28 05:06:23 +0530
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPin Load (0.4ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering pins/show.html.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 6], ["votable_type", "Pin"], ["vote_flag", true]]
+  Rendered pins/show.html.haml within layouts/application (10.6ms)
+Completed 200 OK in 65ms (Views: 59.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-28 05:06:28 +0530
+Processing by PinsController#index as HTML
+  Rendering pins/index.html.haml within layouts/application
+  [1m[36mPin Load (0.3ms)[0m  [1m[34mSELECT "pins".* FROM "pins" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered pins/index.html.haml within layouts/application (16.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 82ms (Views: 79.6ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-28 05:06:33 +0530
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6CoYo+EIuWZf1N9vOSk2esnrku+qw1QqFJx/vNzruL/peCKtmvJfalzmZ9WfXEo5n+j+uoEZuwHFV9CQLGGgjg=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-28 05:06:33 +0530
+Processing by PinsController#index as HTML
+  Rendering pins/index.html.haml within layouts/application
+  [1m[36mPin Load (0.2ms)[0m  [1m[34mSELECT "pins".* FROM "pins" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered pins/index.html.haml within layouts/application (9.9ms)
+Completed 200 OK in 57ms (Views: 55.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-09-28 05:06:36 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 102ms (Views: 99.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-28 05:07:06 +0530
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qbup+FaVOM0tFQ9wzb6rqzVbV/4LdB6D63YxlxhaQMPFp829HRfQkf17sptCJ1rhx+IbyRACw3jkpXlJBE/dLQ==", "user"=>{"email"=>"kanhaiyakumar1709@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kanhaiyakumar1709@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "kanhaiyakumar1709@gmail.com"], ["encrypted_password", "$2a$11$GMy2l6vRqHIM.x7YpzmUq.fVep.aAYFN9pRPKNOTHSHSPjagZ5Tg."], ["created_at", 2016-09-27 23:37:07 UTC], ["updated_at", 2016-09-27 23:37:07 UTC]]
+  [1m[35m (189.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-09-27 23:37:07 UTC], ["last_sign_in_at", 2016-09-27 23:37:07 UTC], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", 2016-09-27 23:37:07 UTC], ["id", 2]]
+  [1m[35m (163.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 598ms (ActiveRecord: 358.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-28 05:07:07 +0530
+Processing by PinsController#index as HTML
+  Rendering pins/index.html.haml within layouts/application
+  [1m[36mPin Load (0.3ms)[0m  [1m[34mSELECT "pins".* FROM "pins" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered pins/index.html.haml within layouts/application (10.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 56ms (Views: 54.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/pins/7" for 127.0.0.1 at 2016-09-28 05:07:14 +0530
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPin Load (0.3ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering pins/show.html.haml within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 7], ["votable_type", "Pin"], ["vote_flag", true]]
+  Rendered pins/show.html.haml within layouts/application (12.6ms)
+Completed 200 OK in 80ms (Views: 75.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-28 05:07:17 +0530
+Processing by PinsController#index as HTML
+  Rendering pins/index.html.haml within layouts/application
+  [1m[36mPin Load (0.3ms)[0m  [1m[34mSELECT "pins".* FROM "pins" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered pins/index.html.haml within layouts/application (10.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 100ms (Views: 96.2ms | ActiveRecord: 1.0ms)
+
+
